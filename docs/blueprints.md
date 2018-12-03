@@ -11,6 +11,6 @@
 * Payments Blueprint
     * Endpoints: BalanceListView (Filterable List), MakePaymentView
 * User Blueprint
-    * Endpoints: UserInfo, UserInfoEdit
+    * Endpoints: UserInfo, UserInfoEdit, RemoveAccount
 * DocCreate Blueprint
     * Endpoints: DocCreate
