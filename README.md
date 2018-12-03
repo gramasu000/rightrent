@@ -1,2 +1,4 @@
-# rightrent
-Property Management System
+# RightRent
+Property Management System Web Application.
+
+
