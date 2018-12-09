@@ -1,0 +1,51 @@
+/*
+    There will be 6 tables
+        - USERS
+            - userid - integer, primary key, autoincrement
+            - username - text, unique, not null
+            - passwordhash - text, not null
+            - name - text, not null
+            - joindate - timestamp, not null, currenttimestamp default
+        - BUILDINGS
+            - buildingid - integer, primary key, autoincrement
+            - userid - foreign key references USERS/userid
+            - buildingname - text, not null
+            - buildingaddress - text, not null
+            - numberapartments - integer
+            - numberrenters - integer
+        - APARTMENTS
+            - apartmentid - integer, primary key, autoincrement
+            - buildingid - foreign key references BUILDINGS/buildingid
+            - userid - foreign key references USERS/userid
+            - apartmentnumber - text, not null
+            - rentedornot - boolean, not null, default false
+            - storeornot - boolean, not null, default false
+        - RENTERS
+            - renterid - integer, primary key, autoincrement
+            - apartmentid - foreign key references APARTMENTS/apartmentid
+            - buildingid - foreign key references BUILDINGS/buildingid
+            - userid - foreign key references USERS/userid
+            - name - text, not null
+            - phonenumber - text,
+            - phonenumber2 - text,
+            - leasestart - date, not null
+            - leaseend - date, not null
+            - leaseterm - text, not null
+            - balance - integer, not null
+            - extrainfo - text,
+        - EXPENSES
+            - expensesid - integer, primary key, autoincrement
+            - renterid - foreign key references RENTERS/renterid
+            - name - text, not null
+            - amount - integer, not null
+            - issuedate - date, not null
+            - extrainfo - text
+        - PAYMENTS
+            - paymentid - integer, primary key, autoincrement
+            - expenseid - foreign key references EXPENSES/expensesid
+            - renterid - foreign key references RENTERS/renterid
+            - name - text, not null
+            - amount - integer, not null
+            - method - text, not null
+            - paymentdate - date, not null 
+*/
