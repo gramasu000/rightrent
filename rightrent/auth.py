@@ -36,7 +36,7 @@ Endpoint for auth/login -> login
 
 """
 Endpoint for logout -> logout
-    We clear the session variable and we redirect to login page
+    We clear the session variable and we show the logout page
 """
 
 """
