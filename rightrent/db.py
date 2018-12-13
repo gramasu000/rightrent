@@ -35,8 +35,51 @@
 
     check_password(db, username, password, error) -  
         checks if password matches the record in database 
+            calls query_username to get user info
          
     get_user_info(db, username) - 
         returns non-confidential user information 
-            (everything except user_id and passwordhash)
-"""
+            (everything except passwordhash)
+
+    get_expenses(db, user_id, renter_id=None, expense_id=None, pending=True) - 
+        Make a sql query to the database
+        extracting the expenses
+            that are associated with userid
+        returns non-confidential information in dict form
+        If pending=True, then return only unpaid expenses
+        If pending=False, then return all expenses 
+   
+    get_renters(db, user_id,building_id=None,apartment_id=None,renter_id=None) - 
+        Make sql query to the database
+        to extract renters that are associated with user_id
+        return non-confidential information in dict form
+ 
+    get_payments(db, user_id, renter_id=None, expense_id=None, payment_id=None) - 
+        Make a sql query to the database
+            to extract payment information
+        return non-confidential information in dict form
+
+    get_apartments(db, user_id, building_id=None, apartment_id=None) - 
+        Make a sql query to the database 
+            to extract apartment information
+        return non-confidential information in dict form
+
+    get_buildings(db, user_id, building_id=None) - 
+        Make a sql query to the database
+            to extract building information
+        return non-confidential information in dict form
+
+    add_building(db, user_id, building_data) - 
+        Makes a sql query to the database
+            to add a building to the user_id
+
+    check_building_duplicate(building_data) - 
+        Checks to see if building name
+            is not already taken by another building in database
+
+    edit_building(db, user_id, building_id, building_data) - 
+        Makes a sql query to edit
+            the building information
+            of the entry corresponding to building_id    
+
+""" 
