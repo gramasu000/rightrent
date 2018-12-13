@@ -11,8 +11,8 @@
             - userid - foreign key references USERS/userid
             - buildingname - text, not null
             - buildingaddress - text, not null
-            - numberapartments - integer
-            - numberrenters - integer
+            - numberapartments - integer, not null, default 0
+            - numberrenters - integer, not null, default 0
         - APARTMENTS
             - apartmentid - integer, primary key, autoincrement
             - buildingid - foreign key references BUILDINGS/buildingid
@@ -32,20 +32,25 @@
             - leaseend - date, not null
             - leaseterm - text, not null
             - balance - integer, not null
-            - extrainfo - text,
+            - extrainfo - text
         - EXPENSES
             - expensesid - integer, primary key, autoincrement
             - renterid - foreign key references RENTERS/renterid
+            - userid - foreign key references USERS/userid
             - name - text, not null
             - amount - integer, not null
             - issuedate - date, not null
+            - amountpaid - integer, not null, default 0
+            - paidornot - boolean, not null, default false 
             - extrainfo - text
         - PAYMENTS
             - paymentid - integer, primary key, autoincrement
             - expenseid - foreign key references EXPENSES/expensesid
             - renterid - foreign key references RENTERS/renterid
+            - userid - foreign key references USERS/userid
             - name - text, not null
             - amount - integer, not null
             - method - text, not null
             - paymentdate - date, not null 
+            - extrainfo - text
 */
