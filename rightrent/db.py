@@ -73,13 +73,24 @@
         Makes a sql query to the database
             to add a building to the user_id
 
-    check_building_duplicate(building_data) - 
+    check_building_duplicate(db, user_id, building_data) - 
         Checks to see if building name
-            is not already taken by another building in database
+            is already taken by another building in database
+                associated with user_id
 
     edit_building(db, user_id, building_id, building_data) - 
         Makes a sql query to edit
             the building information
             of the entry corresponding to building_id    
 
+    check_building_renters(db, user_id, building_id) - 
+         Checks to see if any renters associated with 
+            the user_id lives in building with building_id
+
+    checks_building_apartments(db, user_id, building_id) - 
+        Checks to see if any apartments associated
+            with the user_id lives in building with building_id
+
+    delete_building(db, user_id, building_id) -
+        Makes sql query to delete building
 """ 

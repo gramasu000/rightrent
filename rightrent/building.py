@@ -3,7 +3,7 @@
 # Create a blueprint object with url prefix bd/
 
 """
-Endpoint for bd/add -> add
+Endpoint for bd/<user-id>/add -> add
 Add the login required decorator
     - If request method is POST
         - Gets the building name and building address
@@ -20,7 +20,7 @@ Add the login required decorator
 """
 
 """
-Endpoint for bd/<building-id>/info
+Endpoint for bd/<user-id>/<building-id>/info
 Add the login required decorator
     - Calls get_building(building_id) to 
         get building information in dict form
@@ -40,5 +40,17 @@ Add the login required decorator
     - If request method is GET
         - Calls get_building(building_id)
             to get building info in dict form
+        - Calls check_building_renters and
+            check_building_apartments to see if
+                delete button should be displayed 
         - Loads dict into render_template and serve the page 
+"""
+
+"""
+Endpoint for bd/<user-id>/<building-id>/delete
+    Call delete_building to delete
+        building in database, and then
+            redirect to buildinglist
+    Creates an deletebuildingmessage as
+        a property of g 
 """

@@ -66,5 +66,7 @@ Add the login required decorator
     This information will be arranged in dict form,
         and then passed to the template renderer
         which will render the listview template.
+    If deletebuildingmessage is not null,
+        then flash the message.
 """
 
