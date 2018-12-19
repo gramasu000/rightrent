@@ -13,6 +13,7 @@
             - buildingaddress - text, not null
             - numberapartments - integer, not null, default 0
             - numberrenters - integer, not null, default 0
+            - extrainfo - text
         - APARTMENTS
             - apartmentid - integer, primary key, autoincrement
             - buildingid - foreign key references BUILDINGS/buildingid
@@ -20,6 +21,7 @@
             - apartmentnumber - text, not null
             - rentedornot - boolean, not null, default false
             - storeornot - boolean, not null, default false
+            - extrainfo - text
         - RENTERS
             - renterid - integer, primary key, autoincrement
             - apartmentid - foreign key references APARTMENTS/apartmentid
