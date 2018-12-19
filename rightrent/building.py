@@ -6,12 +6,13 @@
 Endpoint for bd/<user-id>/add -> add
 Add the login required decorator
     - If request method is POST
-        - Gets the building name and building address
+        - Gets the building name, extra info and building address
             from the submitted form data
         - Checks if building name is not empty or null
         - Calls check_building_duplicate 
             to check for buildings in database with duplicate name
         - If no errors,  
+            call add_building and 
             flash a message 
             saying that building creation successful
         - If errors, flash an error message 
@@ -36,21 +37,24 @@ Add the login required decorator
         - Check if new building name is not taken
             by calling check_building_duplicate
         - Call edit_building(user_id, building_id)
-        - flash message that edit building is successful 
+        - flash message that edit building is successful
+            or flash error message 
     - If request method is GET
         - Calls get_building(building_id)
             to get building info in dict form
         - Calls check_building_renters and
             check_building_apartments to see if
-                delete button should be displayed 
+                delete button should be displayed
         - Loads dict into render_template and serve the page 
 """
 
 """
 Endpoint for bd/<user-id>/<building-id>/delete
+Add the login required decorator
+    Only accepts POST requests
     Call delete_building to delete
-        building in database, and then
+        building in database,
+        flash success message
+        and then
             redirect to buildinglist
-    Creates an deletebuildingmessage as
-        a property of g 
 """

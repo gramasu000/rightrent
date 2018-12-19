@@ -41,13 +41,19 @@ Endpoint for logout -> logout
 
 """
 before_app_request callback function -> load_logged_in_user
-    We transfer the user id and user name from session variable
-        to g variable.
+    We transfer
+        - user id
+        - user name
+        from session variable
+        to g.user dictionary if they exist
+    If they don't exist, we create then and set them equal to None
 """
 
 """
 Decorator function -> login_required(view)
     We check the g object for user id and user name
-        before we enter an endpoint. Otherwise,
+        before we enter an endpoint.
+    If they exist, we enter the endpoint
+    Otherwise,
             we redirect to login page.
 """
