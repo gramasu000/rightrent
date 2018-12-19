@@ -59,10 +59,34 @@
             to extract payment information
         return non-confidential information in dict form
 
-    get_apartments(db, user_id, building_id=None, apartment_id=None) - 
+    get_apartments(db, user_id, building_id=None, apartment_id=None,
+        vacant=None) - 
         Make a sql query to the database 
             to extract apartment information
         return non-confidential information in dict form
+
+    add_apartment(db, user_id, building_id, apartment_data) -
+        Makes a sql query to the database
+            to add an apartment associated
+                with user_id and building_id
+
+    check_apartment_duplicate(db, user_id, building_id, apartment_data) - 
+        Make a sql query to the database
+            to check that apartment number is
+                taken other apartments in the database
+                    with same user and building ids.
+
+    check_apartment_renters(db, user_id, building_id, apartment_id) -
+        Make a sql query to the database
+            to check if renters live in 
+                building id, apartment id 
+
+    edit_apartment(db, user_id, building_id, apartment_id, apartment_data) - 
+        Make a sql query to edit information
+            corresponding to apartment_id with new apartment data 
+
+    delete_apartment(db, user_id, building_id, apartment_id) - 
+        Makes sql query to delete building
 
     get_buildings(db, user_id, building_id=None) - 
         Make a sql query to the database
