@@ -53,7 +53,30 @@
         Make sql query to the database
         to extract renters that are associated with user_id
         return non-confidential information in dict form
- 
+
+    check_other_renters(db, user_id, building_id, apartment_id, renter_data) -
+        Makes sql query to see to check if
+            another renter in database is associated with
+                building_id, apartment_id 
+                    and has an unfinished lease term
+
+    add_renter(db, user_id, building_id, apartment_id, renter_data) -
+        Make a sql query to the database to add
+            a renter associated with building_id, apartmant_id 
+
+    edit_renter(db, user_id, building_id, apartment_id, renter_id, renter_data) - 
+        Make a sql query to the database to edit 
+            a renter with renter_id with renter_data
+
+    check_renter_expenses(db, user_id, renter_id) - 
+        Makes a sql query to check whether
+            any expenses exist in the database
+            that are associated with renter_id
+    
+    delete_renter(db, user_id, building_id, apartment_id, renter_id) - 
+        Makes a sql query to delete the renter
+            associated with renter_id from the database
+    
     get_payments(db, user_id, renter_id=None, expense_id=None, payment_id=None) - 
         Make a sql query to the database
             to extract payment information

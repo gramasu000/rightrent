@@ -33,7 +33,7 @@
             - leasestart - date, not null
             - leaseend - date, not null
             - leaseterm - text, not null
-            - balance - integer, not null
+            - balance - integer, not null, default 0
             - extrainfo - text
         - EXPENSES
             - expensesid - integer, primary key, autoincrement
