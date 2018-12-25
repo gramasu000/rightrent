@@ -1,6 +1,6 @@
 # Imports
 
-# Create an apartment object with URL prefix rntr/
+# Create a renter blueprint with URL prefix rntr/
 
 """
 Endpoint for rntr/<user-id>/add

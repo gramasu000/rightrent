@@ -25,7 +25,9 @@ Endpoint for auth/login -> login
     - if request method is POST
         - We get username and password
         - Call get_db to initiate a db connection
-        - Call check_username_exists to check if username is valid,
+        - Check that new username is not empty
+        - Check that new password is not empty
+        - Call check_duplicate_username to check if username is valid,
                 if not, we flash error and return
         - Call check_password to see if password is correct,
                 if not, we flash error and return

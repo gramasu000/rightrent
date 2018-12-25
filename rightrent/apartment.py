@@ -1,6 +1,6 @@
 # Imports
 
-# Create an apartment object with url prefix apt/
+# Create an apartment blueprint with url prefix apt/
 
 """
 Endpoint for apt/<user-id>/add
