@@ -23,12 +23,14 @@
     check_duplicate_username(db, username, error) - check if a username is
         already in the database, gives an error if user name is already there
     
-    save_credentials(db, username, password) - enters username and password
-        to database table
+    save_credentials(db, username, password)    
+        - enters username and password
+            to database table
 
-    query_username(db, username) - Queries the username 
-        and returns the associated row if it exits
-
+    edit_username(db, user_id, userdata) -
+        Makes a sql query to edit user information
+            associated with user_id with userdata
+    
     check_username_exists(db, username, error) - 
         checks if username exists in database i.e.
             query_username does not output None
@@ -37,18 +39,35 @@
         checks if password matches the record in database 
             calls query_username to get user info
          
-    get_user_info(db, username) - 
+    get_user_info(db, user_id=None, username=None) - 
         returns non-confidential user information 
             (everything except passwordhash)
 
-    get_expenses(db, user_id, renter_id=None, expense_id=None, pending=True) - 
+    check_user_buildings(db, user_id=None) - 
+        checks if any buildings are there in database
+            that are associated to user_id
+
+    delete_user(db, user_id=None) - 
+        Makes sql query to remove user with user_id from database
+
+    get_expenses(db, user_id, renter_id=None, expense_id=None, pending=None) - 
         Make a sql query to the database
         extracting the expenses
             that are associated with userid
         returns non-confidential information in dict form
         If pending=True, then return only unpaid expenses
-        If pending=False, then return all expenses 
-   
+        If pending=None, then return all expenses 
+ 
+    add_expenses(db, user_id, renter_list, expense_data) -
+        Make a sql query to the database
+            to add expense for each renter in renter list
+            with expense_data
+
+    delete_expense(db, user_id, renter_id, expense_id) - 
+        Make a sql query to the database
+            to delete expense entry associated with expense_id
+            from the database
+  
     get_renters(db, user_id,building_id=None,apartment_id=None,renter_id=None) - 
         Make sql query to the database
         to extract renters that are associated with user_id
@@ -81,6 +100,15 @@
         Make a sql query to the database
             to extract payment information
         return non-confidential information in dict form
+
+    add_payment(db, user_id, renter_id, expense_id, payment_data) -
+        Make a sql query to the database
+            to add payment associated with renter_id, expense_id
+            with payment_data
+
+    delete_payment(db, user_id, renter_id, expense_id, payment_id) -
+        Make a sql query to the database
+            to delete payment entry associated with payment_id 
 
     get_apartments(db, user_id, building_id=None, apartment_id=None,
         vacant=None) - 
