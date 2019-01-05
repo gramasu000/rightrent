@@ -1,6 +1,9 @@
 # Imports
 import os
+import click
 from flask import Flask
+from flask.cli import with_appcontext
+from database.db import get_db, close_db
 
 """
 This file contains the application factory function
@@ -32,7 +35,32 @@ def _set_config(rightrent, test_config):
         # Otherwise, load test_config
         rightrent.config.from_mapping(test_config)
 
-def _register_components(rightrent):
+def _register_db(rightrent):
+    """
+    Create a custom command to initialize the database,
+        set close_db as a callback whenever app_context tears down 
+    """
+    # These decorators link this function to "flask init-db" cmd-line command.
+    @click.command("init-db")
+    @with_appcontext
+    def init_db_command():
+        """
+        Make a connection and initialize the database (i.e. create tables, etc)
+        """
+        # Get database connection
+        db = get_db()
+        # Run initialization SQL script 
+        with current_app.open_resource("schema.sql") as f:
+            db.executescript(f.read().decode("utf-8"))
+        # Print message
+        click.echo("Initialized Database")
+    # Attach close_db as a callback when the application context tears down
+    rightrent.teardown_appcontext(close_db) 
+    # we register init_db_command as a command line command
+    rightrent.cli.add_command(init_db_command)
+    
+
+def _register_blueprints(rightrent):
     """
     Registers the blueprints and database for rightrent app
     """
